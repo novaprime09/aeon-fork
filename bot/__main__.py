@@ -10,6 +10,7 @@ from quoters import Quote
 from html import escape
 from cloudscraper import create_scraper
 
+import asyncio
 from requests import get as rget
 from pytz import timezone
 from bs4 import BeautifulSoup
@@ -67,6 +68,9 @@ else:
 
 @new_thread
 async def stats(_, message):
+    sticker_message = await message.reply_sticker("CAACAgIAAxkBAAEYonplzwrczhVu3I6HqPBzro3L2JU6YAACvAUAAj-VzAoTSKpoG9FPRjQE")
+    await asyncio.sleep(2)
+    await sticker_message.delete()
     total, used, free, disk = disk_usage('/')
     memory = virtual_memory()
     currentTime = get_readable_time(time() - botStartTime)
@@ -109,6 +113,9 @@ async def stats(_, message):
 
 @new_thread
 async def start(client, message):
+    sticker_message = await message.reply_sticker("CAACAgIAAxkBAAEXyPRledQ6luKt1QABSPMPi2s4rgH3xMUAAmkdAALpI4hJ8xCGgSybQv8zBA")
+    await asyncio.sleep(2)
+    await sticker_message.delete()
     buttons = ButtonMaker()
     reply_markup = buttons.build_menu(2)
     if len(message.command) > 1 and message.command[1] == "private":
@@ -147,6 +154,9 @@ async def start(client, message):
 
 
 async def restart(client, message):
+    sticker_message = await message.reply_sticker("CAACAgUAAxkBAAEXrSRlbwYlArKGw0lVGUGHquKMqbu3fQACLggAAmCIwVXm28BgWp1jmzME")
+    await asyncio.sleep(2)
+    await sticker_message.delete()
     restart_message = await sendMessage(message, 'Restarting...')
     if scheduler.running:
         scheduler.shutdown(wait=False)

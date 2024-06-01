@@ -10,7 +10,7 @@ from html import escape
 from aioshutil import move
 from asyncio import create_subprocess_exec, sleep, Event
 from pyrogram.enums import ChatType
-
+import asyncio
 from bot import OWNER_ID, Interval, aria2, download_dict, download_dict_lock, LOGGER, bot_name, DATABASE_URL, MAX_SPLIT_SIZE, config_dict, status_reply_dict_lock, user_data, non_queued_up, non_queued_dl, queued_up, queued_dl, queue_dict_lock, bot, GLOBAL_EXTENSION_FILTER
 from bot.helper.ext_utils.bot_utils import extra_btns, sync_to_async, get_readable_file_size, get_readable_time, is_mega_link, new_thread
 from bot.helper.ext_utils.files_utils import get_base_name, get_path_size, clean_download, split_file, process_file, clean_target, is_first_archive_split, is_archive, is_archive_split, join_files
@@ -338,6 +338,8 @@ class MirrorLeechListener:
             await RCTransfer.upload(up_path, size)
 
     async def onUploadComplete(self, link, size, files, folders, mime_type, name, rclonePath=''):
+        await self.message.reply_sticker("CAACAgIAAxkBAAEZdwRmJhCNfFRnXwR_lVKU1L9F3qzbtAAC4gUAAj-VzApzZV-v3phk4DQE")
+        await asyncio.sleep(2)
         user_id = self.message.from_user.id
         name, _ = await process_file(name, user_id, isMirror=not self.isLeech)
         user_dict = user_data.get(user_id, {})
@@ -462,6 +464,8 @@ class MirrorLeechListener:
             if self.sameDir and self.uid in self.sameDir['tasks']:
                 self.sameDir['tasks'].remove(self.uid)
                 self.sameDir['total'] -= 1
+        await self.message.reply_sticker("CAACAgUAAxkBAAEZdxRmJhSGaHTpbHXmny9aPbKz9gfqvQACOA0AAmtQOVRDTwRcAyjd3DQE")
+        await asyncio.sleep(2)
         msg = f'Hey, {self.tag}!\n'
         msg += 'Your download has been stopped!\n\n'
         msg += f'<blockquote><b>Reason:</b> {escape(error)}\n'
@@ -503,6 +507,8 @@ class MirrorLeechListener:
             if self.uid in download_dict.keys():
                 del download_dict[self.uid]
             count = len(download_dict)
+        await self.message.reply_sticker("CAACAgUAAxkBAAEZdwhmJhEtVHB_D4aTXr0aSehAiTmPMwACTQQAAgIW2FSpfUijSfRJzzQE")
+        await asyncio.sleep(2)
         msg = f'Hey, {self.tag}!\n'
         msg += 'Your upload has been stopped!\n\n'
         msg += f'<blockquote><b>Reason:</b> {escape(error)}\n'
