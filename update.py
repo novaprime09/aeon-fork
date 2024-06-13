@@ -72,9 +72,9 @@ if path.exists('.git'):
     run(["rm", "-rf", ".git"])
 
 update = run([f"git init -q \
-                 && git config --global user.email yesiamshojib@gmail.com \
-                 && git config --global user.name 5hojib \
-                 && git add . \
+                 && git config --global user.email falgunpatel.fv@gmail.com \
+                 && git config --global user.name lordgaruda \
+s                 && git add . \
                  && git commit -sm update -q \
                  && git remote add origin {UPSTREAM_REPO} \
                  && git fetch origin -q \
