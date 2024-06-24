@@ -199,7 +199,7 @@ def source(self):
 
 
 def get_readable_message():
-    msg = '<b><a href='https://t.me/garudamirror'>Powered by Garuda🦅Mirror</a></b>\n\n'
+    msg = '<b>Powered by GarudaMirror</b>\n\n'
     button = None
     tasks = len(download_dict)
     currentTime = get_readable_time(time() - botStartTime)
